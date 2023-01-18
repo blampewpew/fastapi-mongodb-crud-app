@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
+from app.db.database import init_db
+from app.routers import summaries
 
 
 def get_application():
@@ -15,10 +17,17 @@ def get_application():
         allow_headers=["*"],
     )
 
+    _app.include_router(summaries.router, tags=["summaries"], prefix="/summaries")
+
     return _app
 
 
 app = get_application()
+
+
+@app.on_event("startup")
+async def start_db():
+    await init_db()
 
 
 @app.get("/ping", tags=["Root"])
