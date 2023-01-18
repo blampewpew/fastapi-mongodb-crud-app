@@ -1,11 +1,15 @@
 
 from typing import List, Union
 
-from pydantic import AnyHttpUrl, BaseSettings, validator
+from pydantic import AnyHttpUrl, BaseSettings, validator, AnyUrl
 
 
 class Settings(BaseSettings):
     PROJECT_NAME: str
+    ENVIRONMENT: str = "dev"
+    TESTING: bool = 0
+    DATABASE_URL: AnyUrl = None
+    TEST_DATABASE_URL: AnyUrl = None
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
