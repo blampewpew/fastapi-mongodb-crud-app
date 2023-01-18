@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "dev"
     TESTING: bool = 0
     DATABASE_URL: AnyUrl = None
-    TEST_DATABASE_URL: AnyUrl = None
+    DATABASE_TEST_URL: AnyUrl = None
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
