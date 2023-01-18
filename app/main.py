@@ -19,3 +19,8 @@ def get_application():
 
 
 app = get_application()
+
+
+@app.get("/ping", tags=["Root"])
+def pong():
+    return {"ping": "pong!"}
