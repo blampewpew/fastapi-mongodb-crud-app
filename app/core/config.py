@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     PROJECT_NAME: str
     ENVIRONMENT: str = "dev"
     TESTING: bool = 0
+    DATABASE_NAME: str
+    DATABASE_TEST_NAME: str
     DATABASE_URL: AnyUrl = None
     DATABASE_TEST_URL: AnyUrl = None
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
